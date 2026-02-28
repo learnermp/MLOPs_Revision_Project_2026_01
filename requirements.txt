@@ -1,0 +1,56 @@
+# ===============================
+# Core ML Stack
+# ===============================
+numpy
+pandas
+scipy
+scikit-learn
+imblearn
+xgboost
+catboost
+
+# ===============================
+# Visualization
+# ===============================
+matplotlib
+seaborn
+plotly
+
+# ===============================
+# Experimentation / Notebook
+# ===============================
+ipykernel
+
+# ===============================
+# Database
+# ===============================
+pymongo
+
+# ===============================
+# MLOps / Monitoring
+# ===============================
+evidently==0.7.10   
+dill
+PyYAML
+from_root
+neuro_mf
+
+# ===============================
+# AWS / Cloud
+# ===============================
+boto3
+botocore
+mypy-boto3-s3
+
+# ===============================
+# API Layer
+# ===============================
+fastapi
+uvicorn
+jinja2
+python-multipart
+
+# ===============================
+# Local Package Installation
+# ===============================
+-e .
