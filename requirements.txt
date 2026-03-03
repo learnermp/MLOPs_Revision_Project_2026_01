@@ -51,6 +51,11 @@ jinja2
 python-multipart
 
 # ===============================
+# Other important libraries
+# ===============================
+from_root
+
+# ===============================
 # Local Package Installation
 # ===============================
 -e .
