@@ -210,4 +210,4 @@ __marimo__/
 ~*docx
 .docx
 
-artifact 
+artifact/*

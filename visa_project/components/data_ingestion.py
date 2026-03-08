@@ -8,7 +8,7 @@ from visa_project.entity.config_entity import DataIngestionConfig
 from visa_project.entity.artifact_entity import DataIngestionArtifact
 from visa_project.exception import USvisaException
 from visa_project.logger import logging
-from visa_project.database_access.usvisa_data import USvisaData
+from visa_project.data_access.usvisa_data import USvisaData
 
 class DataIngestion:
     def __init__(self, data_ingestion_config:DataIngestionConfig=DataIngestionConfig()):
@@ -93,3 +93,16 @@ class DataIngestion:
             return data_ingestion_artifact
         except Exception as e:
             raise USvisaException(e, sys) from e
+
+        '''
+        The initiate_data_ingestion method returns a DataIngestionArtifact object – a 
+        simple dataclass instance containing the full file paths to the exported train and test CSVs.
+
+🔍      Breakdown of the Return Value
+        Type: DataIngestionArtifact (defined in artifact_entity.py).
+        Attributes:
+        trained_file_path: Full path to train.csv (e.g., "artifact/03_05_2026_15_49_54/data_ingestion/ingested/train.csv").
+        test_file_path: Full path to test.csv (e.g., "artifact/03_05_2026_15_49_54/data_ingestion/ingested/test.csv").
+        Purpose: Acts as a "receipt" of what the component produced, allowing downstream components (e.g., transformation) 
+        to access the files without hardcoding paths.
+        '''
