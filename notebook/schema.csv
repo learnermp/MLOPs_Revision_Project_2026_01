@@ -1,0 +1,13 @@
+,case_id,continent,education_of_employee,has_job_experience,requires_job_training,no_of_employees,yr_of_estab,region_of_employment,prevailing_wage,unit_of_wage,full_time_position,case_status
+0,category,,,,,,,,,,,
+1,,category,,,,,,,,,,
+2,,,category,,,,,,,,,
+3,,,,category,,,,,,,,
+4,,,,,category,,,,,,,
+5,,,,,,int,,,,,,
+6,,,,,,,int,,,,,
+7,,,,,,,,category,,,,
+8,,,,,,,,,int,,,
+9,,,,,,,,,,category,,
+10,,,,,,,,,,,category,
+11,,,,,,,,,,,,category

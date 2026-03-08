@@ -2,12 +2,14 @@ import sys
 from visa_project.logger import logging
 from visa_project.exception import USvisaException
 from visa_project.components.data_ingestion import DataIngestion
-from visa_project.entity.config_entity import DataIngestionConfig
-from visa_project.entity.artifact_entity import DataIngestionArtifact
+from visa_project.components.data_validation import DataValidation
+from visa_project.entity.config_entity import (DataIngestionConfig, DataValidationConfig)
+from visa_project.entity.artifact_entity import (DataIngestionArtifact, DataValidationArtifact)
 
 class TrainPipeline:
     def __init__(self):
         self.data_ingestion_config = DataIngestionConfig()
+        self.data_validation_config = DataValidationConfig()
 
     def start_data_ingestion(self) -> DataIngestionArtifact:
         try:
@@ -22,12 +24,32 @@ class TrainPipeline:
         except Exception as e:
             raise USvisaException(e, sys) from e
         
+    def start_data_validation(self, data_ingestion_artifact: DataIngestionArtifact) -> DataValidationArtifact:
+        '''
+        This method of TrainingPipeline class is responsible for starting data validation component
+        '''
+
+        logging.info("Entered the start_date_validation method of TrainPipeline class")
+
+        try:
+            data_validation = DataValidation(data_ingestion_artifact=data_ingestion_artifact,
+                                                data_validation_config=self.data_validation_config)
+            data_validation_artifact = data_validation.initiate_data_validation()
+            logging.info("Performed the data validation operation")
+            logging.info("Existed the start_data_validation methof of TrainPipeline")
+
+            return data_validation_artifact
+
+        except Exception as e:
+            raise USvisaException(e, sys) from e    
+        
     def run_pipeline(self) -> None:
         """
         This method of TrainPipeline class is responsible for running complete pipeline
         """       
         try:
             data_ingestion_artifact = self.start_data_ingestion() 
+            data_validation_artifact =self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
 
         except Exception as e:
             raise USvisaException(e, sys) from e
